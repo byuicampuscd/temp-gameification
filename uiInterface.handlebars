@@ -43,14 +43,18 @@
         <line x1="28.8" y1="23.6" x2="28.8" y2="376.6" class="bgLight" />
         <line x1="871.2" y1="23.6" x2="871.2" y2="376.6" class="bgLight" />
         
-        
-        <rect x="96" y="162.5" width="212.5" height="38.5" class="green" />
-        <rect x="302.9" y="157.5" width="122.3" height="48.3" class="blue" />
-        <path d="M574.3 160v43.2H93V160H574.3M580.2 154.1h-3.4H90.4 87v3.4 48.3 3.4h3.4 486.4 3.4v-3.4 -48.3V154.1L580.2 154.1z" class="bgLight" />
+        <!--paths-->
+<!--        <path d="M574.3 160v43.2H93V160H574.3M580.2 154.1h-3.4H90.4 87v3.4 48.3 3.4h3.4 486.4 3.4v-3.4 -48.3V154.1L580.2 154.1z" class="bgLight" />-->
+<!--        <path d="M574.3 279.2v43.2H417.8v-43.2H574.3M580.2 273.3h-2.4H414.2h-2.4v3.4 48.3 3.4h2.4 163.6 2.4v-3.4 -48.3V273.3L580.2 273.3z" class="green" />-->
 <!--        <path d="M387.8 279.2v43.2H93v-43.2H387.8M393.7 273.3h-4.4 -298H87v3.4 48.3 3.4h4.4 298 4.4v-3.4 -48.3V273.3L393.7 273.3z" class="bgLight" />-->
-        <rect x="95" y="282" width="{{width (fillRequired) 95}}" height="38" class="green" />
-        <path d="M574.3 279.2v43.2H417.8v-43.2H574.3M580.2 273.3h-2.4H414.2h-2.4v3.4 48.3 3.4h2.4 163.6 2.4v-3.4 -48.3V273.3L580.2 273.3z" class="green" />
-        <rect x="415.1" y="276.7" width="89.9" height="48.3" class="blue" />
+        
+        <!-- fills -->
+        <rect x="93" y="162.5" width="{{width (fillUnitRequired) 93}}" height="38.5" class="green" />
+        <rect x="302.9" y="162.5" width="122.3" height="38.5" class="blue" />
+        <rect x="93" y="282" width="{{width (fillRequired) 93}}" height="38" class="green" />
+        <rect x="418" y="282" width="{{width (fillOptional) 418}}" height="38" class="blue" />
+        
+        <!-- white outlines -->
         <path d="M580.2 154.1v3.4 48.3 3.4h-3.4H90.4 87v-3.4 -48.3 -3.4h3.4 486.4H580.2M583.6 150.7h-3.4 -3.4H90.4 87h-3.4v3.4 3.4 48.3 3.4 3.4H87h3.4 486.4 3.4 3.4v-3.4 -3.4 -48.3 -3.4V150.7L583.6 150.7z" class="white" />
         <path d="M393.7 273.3v3.4 48.3 3.4h-4.4 -298H87v-3.4 -48.3 -3.4h4.4 298H393.7M397.1 269.9h-3.4 -4.4 -298H87h-3.4v3.4 3.4 48.3 3.4 3.4H87h4.4 298 4.4 3.4v-3.4 -3.4 -48.3 -3.4V269.9L397.1 269.9z" class="white" />
         <path d="M580.2 273.3v3.4 48.3 3.4h-2.4H414.2h-2.4v-3.4 -48.3 -3.4h2.4 163.6H580.2M583.6 269.9h-3.4 -2.4H414.2h-2.4 -3.4v3.4 3.4 48.3 3.4 3.4h3.4 2.4 163.6 2.4 3.4v-3.4 -3.4 -48.3 -3.4V269.9L583.6 269.9z" class="white" />
@@ -65,7 +69,7 @@
             UNIT GRADE
         </text>
         <g id="unitPercent">
-            {{#if unitPercent}}
+            {{#if unitGrade}}
             <text  x="575" y="200" text-anchor="end" font-size="47" class="white">
                 {{unitPercent}}%
             </text>
