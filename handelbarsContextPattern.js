@@ -105,6 +105,16 @@ Handlebars.registerHelper('widthUnitOptional', function () {
         x1 = 94,
         x2 = 574,
         diff = x2 - x1;
-
     return percent * diff;
 });
+
+Handlebars.registerHelper('transformUnitOptional', function () {
+    "use strict";
+    var percent = this.optionalTop / this.optionalBottom * UNIT_WEIGHTS.OPTIONAL / 100,
+        x1 = 94,
+        x2 = 574,
+        diff = x2 - x1;
+    return percent * diff;
+});
+
+
