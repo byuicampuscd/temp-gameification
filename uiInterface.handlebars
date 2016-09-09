@@ -46,11 +46,11 @@
         <!--paths-->
 <!--        <path d="M574.3 160v43.2H93V160H574.3M580.2 154.1h-3.4H90.4 87v3.4 48.3 3.4h3.4 486.4 3.4v-3.4 -48.3V154.1L580.2 154.1z" class="bgLight" />-->
 <!--        <path d="M574.3 279.2v43.2H417.8v-43.2H574.3M580.2 273.3h-2.4H414.2h-2.4v3.4 48.3 3.4h2.4 163.6 2.4v-3.4 -48.3V273.3L580.2 273.3z" class="green" />-->
-<!--        <path d="M387.8 279.2v43.2H93v-43.2H387.8M393.7 273.3h-4.4 -298H87v3.4 48.3 3.4h4.4 298 4.4v-3.4 -48.3V273.3L393.7 273.3z" class="bgLight" />-->
-        
+<!--        <path d="M387.8 279.2v43.2H93v-43.2H387.8M393.fillUnitOptional7 273.3h-4.4 -298H87v3.4 48.3 3.4h4.4 298 4.4v-3.4 -48.3V273.3L393.7 273.3z" class="bgLight" />-->
+         
         <!-- fills -->
         <rect x="93" y="162.5" width="{{width (fillUnitRequired) 93}}" height="38.5" class="green" />
-        <rect x="302.9" y="162.5" width="122.3" height="38.5" class="blue" />
+        <rect x="{{fillUnitRequired}}" y="162.5" width="{{widthUnitOptional}}" height="38.5" class="blue" />
         <rect x="93" y="282" width="{{width (fillRequired) 93}}" height="38" class="green" />
         <rect x="418" y="282" width="{{width (fillOptional) 418}}" height="38" class="blue" />
         
@@ -101,7 +101,7 @@
             {{unitGrade}}
         </text>
     </g>
-    <g id="unitMandatory" transform="translate(280.3597 144.043)">
+    <g id="unitMandatory" transform="translate({{fillUnitRequired}} 144.043)">
         <text transform="scale(0.83 1)" text-anchor="middle"  font-size="20" class="green">
             {{#if unitGrade}}
                 {{unitRequiredTop}}&#x2F;70

@@ -10,11 +10,6 @@ var context = {
             requiredBottom: 500,
             optionalTop: 175,
             optionalBottom: 300,
-            unitRequiredTop: 30,
-            unitRequiredBottom: 70,
-            unitOptionalTop: 15,
-            unitOptionalBottom: 30,
-            unitPercent: 20,
             unitGrade: "B+"
         }, {
             name: "Baroque",
@@ -22,11 +17,6 @@ var context = {
             requiredBottom: 500,
             optionalTop: 0,
             optionalBottom: 300,
-            unitRequiredTop: 0,
-            unitRequiredBottom: 70,
-            unitOptionalTop: 0,
-            unitOptionalBottom: 30,
-            unitPercent: 0,
             unitGrade: "F"
         }, {
             name: "Techno",
@@ -34,11 +24,6 @@ var context = {
             requiredBottom: 500,
             optionalTop: 300,
             optionalBottom: 300,
-            unitRequiredTop: 70,
-            unitRequiredBottom: 70,
-            unitOptionalTop: 30,
-            unitOptionalBottom: 30,
-            unitPercent: 100,
             unitGrade: "A+"
         }, {
             name: "Country",
@@ -46,16 +31,37 @@ var context = {
             requiredBottom: 500,
             optionalTop: 0,
             optionalBottom: 300,
-            unitRequiredTop: 70,
-            unitRequiredBottom: 70,
-            unitOptionalTop: 30,
-            unitOptionalBottom: 30,
-            unitPercent: 100,
             unitGrade: "A+"
         }
     ]
 };
 
+var UNIT_WEIGHTS = {
+    REQUIRED: 70,
+    OPTIONAL: 30
+};
+
+//Caculated Unit Scores
+Handlebars.registerHelper('unitPercent', function () {
+    "use strict";
+    var requiredPer = this.requiredTop / this.requiredBottom * UNIT_WEIGHTS.REQUIRED / 100,
+        optionalPer = this.optionalTop / this.optionalBottom * UNIT_WEIGHTS.OPTIONAL / 100;
+    return ((requiredPer + optionalPer) * 100).toFixed(0);
+});
+
+Handlebars.registerHelper('unitRequiredTop', function () {
+    "use strict";
+    var required = this.requiredTop / this.requiredBottom * UNIT_WEIGHTS.REQUIRED;
+    return required.toFixed(0);
+});
+
+Handlebars.registerHelper('unitOptionalTop', function () {
+    "use strict";
+    var optional = this.optionalTop / this.optionalBottom * UNIT_WEIGHTS.OPTIONAL;
+    return optional.toFixed(0);
+});
+
+//Display numbers
 Handlebars.registerHelper('width', function (fill, xStart) {
     "use strict";
     return fill - xStart;
@@ -79,20 +85,26 @@ Handlebars.registerHelper('fillOptional', function () {
     return x1 + (percent * diff);
 });
 
-Handlebars.registerHelper('fillUnitRequired', function () {
+function makefillUnitRequired(data) {
     "use strict";
-    var percent = this.unitRequiredTop / this.unitRequiredBottom,
+    var percent = data.requiredTop / data.requiredBottom * UNIT_WEIGHTS.REQUIRED / 100,
         x1 = 94,
         x2 = 574,
         diff = x2 - x1;
     return x1 + (percent * diff);
+}
+
+Handlebars.registerHelper('fillUnitRequired', function () {
+    "use strict";
+    return makefillUnitRequired(this);
 });
 
-Handlebars.registerHelper('fillUnitOptional', function () {
+Handlebars.registerHelper('widthUnitOptional', function () {
     "use strict";
-    var percent = this.optionalTop / this.optionalBottom,
-        x1 = 419,
+    var percent = this.optionalTop / this.optionalBottom * UNIT_WEIGHTS.OPTIONAL / 100,
+        x1 = 94,
         x2 = 574,
         diff = x2 - x1;
-    return x1 + (percent * diff);
+
+    return percent * diff;
 });
