@@ -154,6 +154,13 @@ Handlebars.registerHelper('triangleLeft', function (leftIn, offset) {
     return left + offset;
 });
 
+/************************************ OTHER *********************************************/
+Handlebars.registerHelper('addOne', function (numIn) {
+    "use strict";
+    
+    return parseInt(numIn, 10) + 1;
+});
+
 /************************************ OLD *********************************************
 //Caculated Unit Scores
 
